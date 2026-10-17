@@ -148,7 +148,7 @@ function Work() {
         />
         <div className="project-details">
           <ProjectHeading
-            number=""
+            number="01"
             eyebrow="ONGOING · LEAD ENGINEER"
             title="Parasol Loom"
           >
