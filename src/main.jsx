@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import parasolThumbnail from "../JVJJUX.png";
+import resumePdf from "./JacobSkardaResume.pdf";
 import "./styles.css";
 
 const ArrowIcon = ({ diagonal = false }) => (
@@ -26,14 +27,21 @@ function Header() {
         <span>JACOB SKARDA</span>
       </a>
       <nav aria-label="Main navigation">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a>jacobbruceskarda@gmail.com</a>
       </nav>
-      <a className="header-availability" href="mailto:jacobbruceskarda@gmail.com">
-        <span className="status-dot" />
-        Open to opportunities
-      </a>
+      <div className="header-contacts" aria-label="Contact links">
+        <a className="header-email" href="mailto:jacobbruceskarda@gmail.com">
+          Email <ArrowIcon diagonal />
+        </a>
+        <a
+          className="header-linkedin"
+          href="https://www.linkedin.com/in/jacob-skarda/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          LinkedIn <ArrowIcon diagonal />
+        </a>
+      </div>
     </header>
   );
 }
@@ -47,13 +55,27 @@ function Hero() {
         </p>
         <h1>Software engineer focused on games and graphics.</h1>
         <p className="hero-description">
-          I’m Jacob Skarda, a computer science student and lead engineer on
-          Parasol Loom. I build gameplay systems and am developing my skills
-          in computer graphics.
+          Hi! I’m Jacob Skarda, a computer science student attending Brigham Young University.
+        </p>
+        <p className="hero-description">
+          I am the lead engineer and designer for Parasol Loom, where I build and designer just about every gameplay-oriented system you see in the game.
+        </p>
+        <p className="hero-description">
+          I am just getting started on developing my skills in low-level Computer Graphics, which is where I ultimately hope to end up.
         </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#work">
             View my work <ArrowIcon />
+          </a>
+          <a
+            className="button button-secondary"
+            href={resumePdf}
+            download="Jacob-Skarda-Resume.pdf"
+          >
+            Download resume
+            <svg aria-hidden="true" className="download-icon" viewBox="0 0 16 16" fill="none">
+              <path d="M8 2.5v7m0 0 3-3m-3 3-3-3M3 11.5v2h10v-2" />
+            </svg>
           </a>
           <a className="text-link" href="mailto:jacobbruceskarda@gmail.com">
             Get in touch <ArrowIcon diagonal />
@@ -115,7 +137,7 @@ function Work() {
 
       <article className="project-card parasol-card">
         <div className="project-topline">
-          <span>01 / GAME SYSTEMS</span>
+          <span>GAME SYSTEMS</span>
           <span>UNREAL ENGINE 5</span>
         </div>
         <VideoLink
@@ -126,18 +148,18 @@ function Work() {
         />
         <div className="project-details">
           <ProjectHeading
-            number="01"
+            number=""
             eyebrow="ONGOING · LEAD ENGINEER"
             title="Parasol Loom"
           >
             A 3D platformer built around expressive movement. As lead engineer,
             I develop gameplay systems, character movement, camera behavior, and
-            performance improvements with a small multidisciplinary team.
+            implement assets made by artists on the team.
           </ProjectHeading>
           <div className="project-facts">
             <div>
               <span className="fact-label">FOCUS</span>
-              <p>Character movement, camera, optimization</p>
+              <p>Character movement, camera, asset integration</p>
             </div>
             <div>
               <span className="fact-label">HIGHLIGHT</span>
@@ -148,7 +170,7 @@ function Work() {
             </div>
             <div>
               <span className="fact-label">COLLABORATION</span>
-              <p>Engineering with a small multidisciplinary team</p>
+              <p>Worked closely with other artists to integrate animations and effects authored by them into the game.</p>
             </div>
           </div>
         </div>
@@ -196,82 +218,11 @@ function Work() {
   );
 }
 
-function About() {
+function Footer() {
   return (
-    <section className="about-section" id="about">
-      <div className="section-wrap about-inner">
-        <div className="about-intro">
-          <p className="eyebrow">ABOUT</p>
-          <h2>About me</h2>
-          <p className="about-description">
-            I’m a senior studying computer science at Brigham Young University,
-            with a software engineering emphasis and a minor in mathematics.
-            I’m drawn to the low-level ideas that power real-time experiences —
-            and to making them work well for the people who build and play them.
-          </p>
-        </div>
-        <div className="about-details">
-          <div className="detail-block">
-            <span className="detail-index">01</span>
-            <div>
-              <h3>In production</h3>
-              <p>
-                Student developer at BYU, building and maintaining customer-facing
-                tools and data integrations with development teams.
-              </p>
-            </div>
-          </div>
-          <div className="detail-block">
-            <span className="detail-index">02</span>
-            <div>
-              <h3>Currently exploring</h3>
-              <p>
-                Real-time rendering, engine systems, performance, and the math
-                underneath interactive graphics.
-              </p>
-            </div>
-          </div>
-          <div className="toolkit">
-            <span className="fact-label">TOOLS I WORK WITH</span>
-            <div className="tool-tags">
-              <span>C++</span>
-              <span>C</span>
-              <span>Unreal Engine</span>
-              <span>JavaScript</span>
-              <span>SQL</span>
-              <span>Unity</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Contact() {
-  return (
-    <footer className="contact-section section-wrap" id="contact">
-      <div className="contact-main">
-        <p className="eyebrow">GET IN TOUCH</p>
-        <h2>Contact</h2>
-        <a className="button button-primary" href="mailto:jacobbruceskarda@gmail.com">
-          Say hello <ArrowIcon diagonal />
-        </a>
-      </div>
-      <div className="contact-links">
-        <a href="mailto:jacobbruceskarda@gmail.com">
-          EMAIL <ArrowIcon diagonal />
-        </a>
-        <a href="https://www.linkedin.com/in/jacob-skarda/" target="_blank" rel="noreferrer">
-          LINKEDIN <ArrowIcon diagonal />
-        </a>
-        <a href="https://smilejakoby.itch.io/" target="_blank" rel="noreferrer">
-          ITCH.IO <ArrowIcon diagonal />
-        </a>
-      </div>
+    <footer className="site-footer section-wrap">
       <div className="footer-bottom">
         <span>© 2026 JACOB SKARDA</span>
-        <span>DESIGNED WITH INTENTION, BUILT WITH CODE.</span>
         <a href="#top">BACK TO TOP ↑</a>
       </div>
     </footer>
@@ -285,9 +236,8 @@ function App() {
       <main>
         <Hero />
         <Work />
-        <About />
       </main>
-      <Contact />
+      <Footer />
     </>
   );
 }
