@@ -1,5 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import parasolThumbnail from "../JVJJUX.png";
 import "./styles.css";
 
 const ArrowIcon = ({ diagonal = false }) => (
@@ -16,30 +17,6 @@ const ArrowIcon = ({ diagonal = false }) => (
     )}
   </svg>
 );
-
-function WireframeMark() {
-  return (
-    <svg
-      className="wireframe-mark"
-      viewBox="0 0 400 360"
-      fill="none"
-      aria-hidden="true"
-    >
-      <g className="wireframe-lines">
-        <path d="m201 34 144 83v167l-144 42-146-84V76l146-42Z" />
-        <path d="m55 76 146 84 144-43M201 160v166m0-292v126M55 243l146-83 144 82M127 118v167m146-168v167M55 159l290 83M128 52l145 83v167M273 52 128 135" />
-        <path d="m56 76 145-42 144 83M55 243l146 83 144-42" />
-        <circle cx="201" cy="160" r="5" />
-        <circle cx="345" cy="117" r="5" />
-        <circle cx="55" cy="243" r="5" />
-      </g>
-      <g className="axis-lines">
-        <path d="M201 160h70M201 160l-38-54M201 160v77" />
-        <path d="m268 156 5 4-5 4M160 108l3-2 3 2M197 233l4 4 4-4" />
-      </g>
-    </svg>
-  );
-}
 
 function Header() {
   return (
@@ -66,52 +43,23 @@ function Hero() {
     <section className="hero section-wrap" id="top">
       <div className="hero-copy">
         <p className="eyebrow">
-          <span className="eyebrow-line" />
-          COMPUTER SCIENCE · BYU ’27
+          COMPUTER SCIENCE · BYU · EXPECTED DECEMBER 2027
         </p>
-        <h1>
-          Building the
-          <br />
-          <span>systems behind</span>
-          <br />
-          the experience.
-        </h1>
+        <h1>Software engineer focused on games and graphics.</h1>
         <p className="hero-description">
-          I’m Jacob, an engineer interested in real-time graphics, game systems,
-          and the details that make interactive worlds feel right.
+          I’m Jacob Skarda, a computer science student and lead engineer on
+          Parasol Loom. I build gameplay systems and am developing my skills
+          in computer graphics.
         </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#work">
-            Explore my work <ArrowIcon />
+            View my work <ArrowIcon />
           </a>
           <a className="text-link" href="mailto:jacobbruceskarda@gmail.com">
             Get in touch <ArrowIcon diagonal />
           </a>
         </div>
-        <div className="hero-footnote">
-          <span className="availability-mark" />
-          Seeking software and game-engine internships
-        </div>
       </div>
-      <div className="hero-visual" aria-label="Decorative wireframe diagram">
-        <div className="visual-topline">
-          <span>FIG. 01</span>
-          <span>TRANSFORM / 3D</span>
-        </div>
-        <WireframeMark />
-        <div className="visual-axis-label x-label">X</div>
-        <div className="visual-axis-label y-label">Y</div>
-        <div className="visual-axis-label z-label">Z</div>
-        <div className="visual-coordinates">
-          <span>REAL-TIME</span>
-          <span>PROVO, UT</span>
-        </div>
-        <div className="visual-index">01 — 03</div>
-      </div>
-      <a className="scroll-cue" href="#work">
-        <span className="scroll-line" />
-        SCROLL TO EXPLORE
-      </a>
     </section>
   );
 }
@@ -129,15 +77,40 @@ function ProjectHeading({ number, eyebrow, title, children }) {
   );
 }
 
+function VideoLink({ videoId, title, className = "", thumbnail }) {
+  return (
+    <a
+      className={`video-frame ${className}`.trim()}
+      href={`https://www.youtube.com/watch?v=${videoId}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Watch ${title} on YouTube (opens in a new tab)`}
+    >
+      <img
+        className="video-thumbnail"
+        src={thumbnail ?? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+        alt=""
+        loading="lazy"
+      />
+      <span className="video-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5.8c0-.8.9-1.3 1.6-.9l10 6.2a1 1 0 0 1 0 1.7l-10 6.2a1 1 0 0 1-1.6-.9V5.8Z" />
+        </svg>
+      </span>
+      <span className="video-link-label" aria-hidden="true">Watch on YouTube</span>
+    </a>
+  );
+}
+
 function Work() {
   return (
     <section className="work-section section-wrap" id="work">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">SELECTED WORK</p>
-          <h2>Engineering in motion.</h2>
+          <p className="eyebrow">FEATURED PROJECT</p>
+          <h2>Parasol Loom</h2>
         </div>
-        <span className="section-count">01—02</span>
+        <span className="section-count">GAME DEVELOPMENT</span>
       </div>
 
       <article className="project-card parasol-card">
@@ -145,25 +118,21 @@ function Work() {
           <span>01 / GAME SYSTEMS</span>
           <span>UNREAL ENGINE 5</span>
         </div>
-        <div className="video-frame">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/1P4dWU4c0b4?rel=0"
-            title="My contributions to Parasol Loom — Jacob Skarda"
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
+        <VideoLink
+          videoId="GjSpGz8cW54"
+          title="my contributions to Parasol Loom"
+          thumbnail={parasolThumbnail}
+          className="parasol-video"
+        />
         <div className="project-details">
           <ProjectHeading
             number="01"
             eyebrow="ONGOING · LEAD ENGINEER"
             title="Parasol Loom"
           >
-            A 3D platformer built around expressive movement. I’m the primary
-            engineer, working across character systems, camera behavior, and
-            level design.
+            A 3D platformer built around expressive movement. As lead engineer,
+            I develop gameplay systems, character movement, camera behavior, and
+            performance improvements with a small multidisciplinary team.
           </ProjectHeading>
           <div className="project-facts">
             <div>
@@ -185,47 +154,42 @@ function Work() {
         </div>
         <div className="project-bottomline">
           <span>PERSONAL PROJECT · MAY 2025—PRESENT</span>
-          <span>FEATURE VIDEO</span>
+          <span>FEATURED PROJECT</span>
         </div>
       </article>
 
       <article className="project-card graphics-card">
         <div className="project-topline">
-          <span>02 / GRAPHICS FUNDAMENTALS</span>
-          <span>IN PROGRESS</span>
+          <span>ALSO EXPLORING</span>
+          <span>COMPUTER GRAPHICS</span>
         </div>
         <div className="graphics-content">
-          <div className="graphics-visual">
-            <span className="graphics-visual-label">ILLUSTRATIVE / 3D TRANSFORMS</span>
-            <WireframeMark />
-            <div className="graphics-coordinates">
-              <span>POSITION</span>
-              <span>ROTATION</span>
-              <span>TRANSFORM</span>
-            </div>
-          </div>
+          <VideoLink
+            videoId="iFnOApj7xDI"
+            title="my computer graphics demo"
+            className="graphics-video"
+          />
           <div className="graphics-copy">
             <ProjectHeading
               number="02"
-              eyebrow="LEARNING PROJECT · EARLY STAGE"
-              title="Wireframes in motion"
+              eyebrow="LEARNING PROJECT"
+              title="Learning computer graphics"
             >
-              A small experiment using linear algebra to move wireframes. It’s
-              an early step in learning computer graphics and low-level
-              rendering—not a finished renderer.
+              I’m building my understanding of graphics from the fundamentals.
+              This simple demo is an early exercise in applying transformations
+              and making the underlying math visible.
             </ProjectHeading>
             <div className="learning-note">
-              <span className="note-marker">↳</span>
               <p>
-                Next up: keep building from the fundamentals and make each
-                rendering concept visible.
+                Current focus: linear algebra, transformations, and real-time
+                rendering basics.
               </p>
             </div>
           </div>
         </div>
         <div className="project-bottomline">
+          <span>EARLY STAGE · LEARNING IN PUBLIC</span>
           <span>LINEAR ALGEBRA · TRANSFORMATIONS</span>
-          <span>MORE TO COME</span>
         </div>
       </article>
     </section>
@@ -237,8 +201,8 @@ function About() {
     <section className="about-section" id="about">
       <div className="section-wrap about-inner">
         <div className="about-intro">
-          <p className="eyebrow">A LITTLE ABOUT ME</p>
-          <h2>Engineer first.<br />Always curious.</h2>
+          <p className="eyebrow">ABOUT</p>
+          <h2>About me</h2>
           <p className="about-description">
             I’m a senior studying computer science at Brigham Young University,
             with a software engineering emphasis and a minor in mathematics.
@@ -288,8 +252,8 @@ function Contact() {
   return (
     <footer className="contact-section section-wrap" id="contact">
       <div className="contact-main">
-        <p className="eyebrow">HAVE SOMETHING IN MIND?</p>
-        <h2>Let’s build<br />something real.</h2>
+        <p className="eyebrow">GET IN TOUCH</p>
+        <h2>Contact</h2>
         <a className="button button-primary" href="mailto:jacobbruceskarda@gmail.com">
           Say hello <ArrowIcon diagonal />
         </a>
